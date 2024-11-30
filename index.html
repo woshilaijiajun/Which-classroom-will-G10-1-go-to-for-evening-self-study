@@ -190,6 +190,37 @@
             font-size: 10px;
         }
     }
+/* 下载按钮容器样式 */
+.download-btn-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* 下载按钮样式 */
+.download-btn {
+    background: linear-gradient(135deg, #00d084, #0088cc); /* 渐变背景 */
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* 按钮悬停效果 */
+.download-btn:hover {
+    background: linear-gradient(135deg, #00d084, #0088cc);;
+    transform: translateY(-2px); /* 向上移动，产生点击效果 */
+}
+
+/* 按钮点击时的效果 */
+.download-btn:active {
+    transform: translateY(2px); /* 向下移动 */
+}
 
 </style>
 
@@ -202,7 +233,7 @@
         此网页由赖嘉俊Ethan编写
     </div>
 <header>
-    <h1>G10-1学生晚自习应去教室表</h1><!--大标题-->
+    <h1>G10-1学生晚自习应去的自习室的表</h1><!--大标题-->
 </header>
         <table>
             <thead>
@@ -354,6 +385,13 @@
             <button onclick="closeModal()">关闭</button>
         </div>
     </div>
+
+    <!-- Windows版本下载按钮 -->
+<div class="download-btn-container">
+    <a href="./Windowsversion.rar" class="download-btn" download>
+        点击下载 Windows 版本
+    </a>
+</div>
 
     <script>
         // 获取设备平台信息
