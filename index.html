@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>G10-1学生晚自习应去教室表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* 导入自定义字体 */
+    @font-face {
+        font-family: 'MyCustomFont';  /* 自定义字体名称 */
+        src: url('myfon.ttf') format('truetype');  /* 字体文件的路径 */
+    }
+
+    body {
+        background: linear-gradient(135deg, #00d084 , #0088cc); /* 蓝绿渐变背景 */
+        font-family: 'MyCustomFont', Arial, sans-serif;
+        color: #ffffff; /* 字体颜色为白色 */
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: linear-gradient(135deg, #C41A1E, #1D2B62);
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        color: white; /* 表头字体颜色 */
+        background-color: #333333; /* 表头背景色 */
+    }
+
+    td {
+        background-color:linear-gradient(135deg, #00d084 , #0088cc); /* 数据单元格背景色与网页背景色一致 */
+        color: #ffffff; /* 设置单元格内文字颜色为白色 */
+    }
+
+    /* 给单元格中的文字添加阴影 */
+    td, th {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .add-task {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .device-info {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    /* 底部注意事项样式 */
+    .footer-note {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+
+    .footer-note a {
+        text-decoration: underline;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    /* 模态框的样式 */
+    .modal {
+        display: none; /* 默认隐藏 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* 背景遮罩 */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: linear-gradient(135deg, #00d084, #0088cc); /* 漸變背景 */
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .modal-content h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .modal-content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .modal button {
+        background: #333333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .modal button:hover {
+        background: #555555;
+    }
+
+    .author-info {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    /* 响应式设计 */
+    @media screen and (max-width: 768px) {
+        header h1 {
+            font-size: 20px;
+        }
+
+        table th, table td {
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .modal-content {
+            width: 90%;
+        }
+
+        .device-info {
+            font-size: 12px;
+        }
+
+        .footer-note {
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        table th, table td {
+            padding: 6px;
+            font-size: 10px;
+        }
+
+        .modal-content {
+            width: 95%;
+        }
+
+        header h1 {
+            font-size: 18px;
+        }
+
+        .footer-note {
+            font-size: 12px;
+        }
+
+        .device-info {
+            font-size: 10px;
+        }
+    }
+
+</style>
+
+</head>
+<body>
+    <!-- 设备信息显示 -->
+    <div class="device-info" id="deviceInfo"></div>
+    <!--右上角编写者信息显示-->
+    <div class="author-info">
+        此网页由赖嘉俊Ethan编写
+    </div>
+<header>
+    <h1>G10-1学生晚自习应去教室表</h1><!--大标题-->
+</header>
+        <table>
+            <thead>
+            <tr>
+                <th>中文名</th>
+                <th>英文名</th>
+                <th>周一</th>
+                <th>周二</th>
+                <th>周三</th>
+                <th>周四</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>王一洲</td>
+                <td>Jerry Wang</td>
+                <td>Econ自习</td>
+                <td>Econ自习</td>
+                <td>在本班</td>
+                <td>Econ自习</td>
+            </tr>
+            <tr>
+                <td>曹瑞家</td>
+                <td>Richard</td>
+                <td>Econ自习</td>
+                <td>Econ自习</td>
+                <td>在本班</td>
+                <td>Econ自习</td>
+            </tr>
+            <tr>
+                <td>胡德伟</td>
+                <td>Sebastian</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>崔璨</td>
+                <td>Sara Cui</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>马靖华</td>
+                <td>Jason</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>余博洋</td>
+                <td>Silas</td>
+                <td>在本班</td>
+                <td>羽毛球</td>
+                <td>未知(可以找赖嘉俊更改)</td><!--这个位置是未知的，可以由赖嘉俊更改，等他来找我更改-->
+                <td>羽毛球</td>
+            </tr>
+            <tr>
+                <td>崔乐翀</td>
+                <td>Jack Cui</td>
+                <td>Econ自习</td>
+                <td>Econ自习</td>
+                <td>在本班</td>
+                <td>Econ自习</td>
+            </tr>
+            <tr>
+                <td>张仁泽</td>
+                <td>Mark</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>吴政哲</td>
+                <td>Wu</td>
+                <td>Econ自习</td>
+                <td>Econ自习</td>
+                <td>在本班</td>
+                <td>Econ自习</td>
+            </tr>
+            <tr>
+                <td>赖嘉俊</td>
+                <td>Ethan</td>
+                <td>Econ自习</td>
+                <td>Econ自习</td>
+                <td>C17上网课/在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>范婷莉</td>
+                <td>Lily</td>
+                <td>请假</td>
+                <td>请假</td>
+                <td>请假</td>
+                <td>请假</td>
+            </tr>
+            <tr>
+                <td>吴政恩</td>
+                <td>Jack</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>胡鑫</td>
+                <td>Xin</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>龚希乐</td>
+                <td>Flora</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            <tr>
+                <td>董佳琦</td>
+                <td>Chelsea</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+                <td>在本班</td>
+            </tr>
+            </tbody>
+        </table>
+
+    <!-- 底部注意事项样式 -->
+    <div class="footer-note">
+        <a href="javascript:void(0);" onclick="showNotice()">注意事项</a>
+    </div>
+
+    <!-- 自定义模态框 -->
+    <div class="modal" id="noticeModal">
+        <div class="modal-content">
+            <h2>注意事项</h2>
+            <p>1. 在教室内晚自习的同学需要坐在前三排</p>
+            <p>2. 如果表格内容有误可以找赖嘉俊来修改</p>
+            <p>😊谢谢!😊</p>
+            <button onclick="closeModal()">关闭</button>
+        </div>
+    </div>
+
+    <script>
+        // 获取设备平台信息
+        function getDeviceInfo() {
+            var platform = navigator.platform.toLowerCase();
+            var deviceInfo = '';
+
+            if (platform.includes('win')) {
+                deviceInfo = '😊Windows设备😊';
+            } else if (platform.includes('linux')) {
+                deviceInfo = '🐧linux设备🐧';
+            } else if (platform.includes('iphone') || platform.includes('ipad')) {
+                deviceInfo = '🍎IOS设备🍎';
+            } else if (platform.includes('mac')) {
+                deviceInfo = '🍎Macos设备🍎';
+            } else if (platform.includes('android')) {
+                deviceInfo = '😎安卓设备😎';
+            } else {
+                deviceInfo = '⁉️其他设备⁉️';
+            }
+
+            // 将设备信息显示在页面上
+            document.getElementById('deviceInfo').innerText = deviceInfo;
+        }
+
+        // 调用函数显示设备信息
+        getDeviceInfo();
+
+        // 显示自定义模态框
+        function showNotice() {
+            document.getElementById('noticeModal').style.display = 'flex';
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('noticeModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
